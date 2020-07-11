@@ -1,0 +1,17 @@
+server:
+  port: 6060
+
+spring:
+  application:
+    name: spring-cloud-hystrix-dashboard-server
+
+#eureka 配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@

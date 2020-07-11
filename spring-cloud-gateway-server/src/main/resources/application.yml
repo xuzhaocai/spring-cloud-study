@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: spring-cloud-gateway-server
+  cloud:
+    gateway:
+
+      # 配置路由，可以配置多个
+      routes:
+        - id: order-microservice-router  # id 自定义路由的id
+          # uri就是目标服务地址,这里使用服务名的方式，gateway会帮我们去注册中心中获取服务列表
+          uri: lb://spring-cloud-order-service-provider
+          predicates:   # 断言，也就是路由条件 ，这里使用了path作为路由条件
+            - Path=/order/**
+        - id: user-microservice-router
+          uri: lb://spring-cloud-user-service-consumer
+          predicates:
+            - Path=/user/**
+  zipkin:
+    base-url: http://127.0.0.1:9100
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1
+#eureka 配置
+eureka:
+  client:
+    service-url:
+      # eureka server url
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+
+#分布式链路追踪
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+---
+spring:
+     profiles: g1
+server:
+  port: 8020
+---
+spring:
+     profiles: g2
+server:
+  port: 8021

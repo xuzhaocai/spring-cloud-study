@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: spring-cloud-eureka-server
+
+
+---
+spring:
+  profiles: u1
+eureka:
+  instance:
+    hostname: EurekaServerA
+  client:
+    service-url:
+      defaultZone:  http://EurekaServerB:9091/eureka
+    register-with-eureka: true
+    fetch-registry: true
+server:
+  port: 9090
+---
+spring:
+  profiles: u2
+eureka:
+  instance:
+    hostname: EurekaServerB
+  client:
+    service-url:
+      defaultZone:  http://EurekaServerA:9090/eureka
+    register-with-eureka: true
+    fetch-registry: true
+server:
+  port: 9091

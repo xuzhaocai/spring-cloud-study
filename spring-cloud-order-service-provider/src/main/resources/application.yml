@@ -1,0 +1,50 @@
+
+spring:
+  application:
+    name: spring-cloud-order-service-provider
+  zipkin:
+    base-url: http://127.0.0.1:9100 # zipkin server的请求地址
+    sender:
+      type: web
+
+  sleuth:
+    sampler:
+      probability: 1
+
+#日志配置
+logging:
+  level:
+    #添加分布式链路追踪日志级别
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+---
+spring:
+  profiles: p1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true   # 使用ip注册
+    #自定义实例显示格式,添加版本号
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+server:
+  port: 7070
+
+---
+spring:
+  profiles: p2
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true   # 使用ip注册
+    #自定义实例显示格式,添加版本号
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+server:
+  port: 7071

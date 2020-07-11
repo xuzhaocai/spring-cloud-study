@@ -1,0 +1,114 @@
+
+spring:
+  application:
+    name: spring-cloud-user-service-consumer
+  zipkin:
+    base-url: http://127.0.0.1:9100 # zipkin server的请求地址
+    sender:
+      # web 客户端将踪迹日志数据通过网络请求的方式传送到服务端，另外还有配置 # kafka/rabbit 客户端将踪迹日志数据传递到mq进行中转
+      type: web
+  sleuth:
+    sampler:
+      # 采样率 1 代表100%全部采集 ，默认0.1 代表10% 的请求踪迹数据会被采集
+      # 生产环境下，请求量非常大，没有必要所有请求的踪迹数据都采集分析，对于网络包括
+      # server端压力都是比较大的，可以配置采样率采集一定比例的请求的踪迹数据进行分析即可
+      probability: 1
+
+# 配置springboot中暴露健康检查等断点接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    # 暴露健康接口的细节
+  endpoint:
+    health:
+      show-details: always
+
+
+
+
+
+#针对的被调用方微服务名称,不加就是全局生效 lagou-service-resume:
+
+
+spring-cloud-order-service-provider:
+  ribbon:
+    #请求连接超时时间
+    ConnectTimeout: 1000
+    #请求处理超时时间
+    ReadTimeout: 5000
+    #对所有操作都进行重试
+    OkToRetryOnAllOperations: false
+    ####根据如上配置，当访问到故障请求的时候，它会再尝试访问一次当前实例(次数由MaxAutoRetries配置)， ####如果不行，就换一个实例进行访问，如果还不行，再换一次实例访问(更换次数由MaxAutoRetriesNextServer配置)，
+    ####如果依然不行，返回失败信息。
+    MaxAutoRetries: 0 #对当前选中实例重试次数，不包括第一次调用
+    MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+    #负载均衡策略
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+
+# 开启Fegin对熔断器的支持
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      #设置压缩的数据类型，此处也是默认值
+      mime-types: text/html,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # 配置熔断器的超时时间，我这里配置了12s
+            timeoutInMilliseconds: 12000
+#Feign日志只会对日志级别为debug的做出响应
+logging:
+  level:
+    com.xuzhaocai.consumer.service.OrderStatisticFeginClient: debug
+    #添加分布式链路追踪日志级别
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+
+---
+spring:
+  profiles: c1
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+#spring-cloud-order-service-provider:
+  #ribbon:
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
+---
+spring:
+  profiles: c2
+server:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+    #spring-cloud-order-service-provider:
+    #ribbon:
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
