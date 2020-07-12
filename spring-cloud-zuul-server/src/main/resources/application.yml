@@ -1,0 +1,27 @@
+server:
+  port: 8030
+
+spring:
+  application:
+    name: spring-cloud-zuul-server
+
+
+#eureka 配置
+eureka:
+  client:
+    service-url:
+      # eureka server url
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+zuul:
+  routes:
+    user-service-consumer-router:
+      path: /user/**
+      service-id: spring-cloud-user-service-consumer
+      strip-prefix: false
+  ignored-services: spring-cloud-user-service-consumer
+  prefix: /beijing

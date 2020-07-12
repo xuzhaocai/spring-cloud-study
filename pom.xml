@@ -17,6 +17,7 @@
         <module>spring-cloud-stream-producer</module>
         <module>spring-cloud-stream-consumer</module>
         <module>spring-cloud-zipkin-server</module>
+        <module>spring-cloud-zuul-server</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -9,6 +9,7 @@
 6. [《SpringCloud之Hystrix使用高级篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107058274)
 7. [《SpringCloud之Feign使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107073918)
 8. [《SpringCloud之Gateway使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107101640)
-9. [《SpringCloud之Stream学习篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107234048)
-10. [《SpringCloud之Sleuth+Zipkin链路追踪使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107282298) 
+9. [《SpringCloud之Zuul网关使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107289572)
+10. [《SpringCloud之Stream学习篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107234048)
+11. [《SpringCloud之Sleuth+Zipkin链路追踪使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107282298) 
 
