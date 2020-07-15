@@ -1,0 +1,55 @@
+server:
+  port: 9060
+
+spring:
+  application:
+    name: spring-cloud-config-server
+
+  ### spring cloud config 配置
+  cloud:
+    config:
+      server:
+        git:
+          # 这个就是你放配置文件的git仓库地址
+          uri: https://github.com/xuzhaocai/spring-cloud-config-study-repo.git
+          # git 用户
+          username: xx
+          # git 密码
+          password: xx
+          #
+          search-paths:
+            - spring-cloud-config-study-repo
+      label: master
+
+
+
+
+### 配置eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://EurekaServerA:9090/eureka,http://EurekaServerB:9091/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true   # 使用ip注册
+    #自定义实例显示格式,添加版本号
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+
+
+
+
+
+
+
+# springboot 暴露端点健康
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"
+
+# 暴露健康细节
+  endpoint:
+    health:
+      show-details: always
