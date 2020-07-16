@@ -13,15 +13,19 @@ spring:
           # 这个就是你放配置文件的git仓库地址
           uri: https://github.com/xuzhaocai/spring-cloud-config-study-repo.git
           # git 用户
-          username: xx
+          username: xxx
           # git 密码
-          password: xx
+          password: xxx
           #
           search-paths:
             - spring-cloud-config-study-repo
       label: master
 
-
+  rabbitmq:
+    host: 116.85.26.130
+    port: 5672
+    username: guest
+    password: guest
 
 
 ### 配置eureka
