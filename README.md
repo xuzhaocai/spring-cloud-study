@@ -11,6 +11,6 @@
  8. [《SpringCloud之Gateway使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107101640)
  9. [《SpringCloud之Zuul网关使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107289572)
  10. [《SpringCloud之Config配置中心理论篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107348669) 
- 11.  [《SpringCloud之Config配置中心实践篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107353311)
+ 11. [《SpringCloud之Config配置中心实践篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107353311)
  12. [《SpringCloud之Stream学习篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107234048)
  13. [《SpringCloud之Sleuth+Zipkin链路追踪使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107282298) 
