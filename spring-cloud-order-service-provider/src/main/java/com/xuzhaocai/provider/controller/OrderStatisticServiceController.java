@@ -23,13 +23,13 @@ public class OrderStatisticServiceController {
     @GetMapping("/getTodayFinishOrderNum/{id}")
     public Integer getTodayFinishOrderNum(@PathVariable("id") Integer id){
         System.out.println("我是"+port);
-        if (port==7070){
+        /*if (port==7070){
             try {// 睡眠10s
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         return port;
     }
     // 获取appName

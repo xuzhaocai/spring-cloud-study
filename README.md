@@ -1,9 +1,9 @@
 # spring-cloud-study
 学习springcloud各组件的实践演示源码
 ---
-### 1. springcloud netflix
+### 1. spring cloud netflix
 以下文章源码可以访问tag:v1.0-netflix
- 学习文章持续更新中。。。
+（学习文章持续更新中。。。）
  1. [《SpringCloud之Eureka理论篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/106966840)
  2. [《SpringCloud之Eureka使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/106962926)
  3. [《SpringCloud之Ribbon理论篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107041951)
@@ -16,4 +16,7 @@
  10. [《SpringCloud之Config配置中心理论篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107348669) 
  11. [《SpringCloud之Config配置中心实践篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107353311)
  12. [《SpringCloud之Stream学习篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107234048)
- 13. [《SpringCloud之Sleuth+Zipkin链路追踪使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107282298) 
+ 13. [《SpringCloud之Sleuth+Zipkin链路追踪使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107282298)
+ ### 2.spring cloud alibaba  
+ 以下文章源码访问v2.0-alibaba 分支
+ 1. [《Spring Cloud Alibaba之nacos注册中心使用篇》](https://blog.csdn.net/yuanshangshenghuo/article/details/107500755)

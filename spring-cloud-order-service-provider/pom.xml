@@ -13,10 +13,21 @@
     </properties>
 
     <dependencies>
-        <dependency>
+
+        <!--springcloud eureka client注释掉，因为我们要使用 nacos作为注册中心-->
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>-->
+
+
+        <!--添加 spring cloud alibaba  nacos 作为注册中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+
+
 
 
         <!--链路追踪-->

@@ -13,10 +13,23 @@
     </properties>
 
     <dependencies>
-        <dependency>
+
+
+        <!--这里使用nacos 所以要注释掉eureka-->
+       <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+       -->
+
+        <!--添加 spring cloud alibaba  nacos 作为注册中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+
+
 
         <!--熔断器Hystrix-->
        <!-- <dependency>

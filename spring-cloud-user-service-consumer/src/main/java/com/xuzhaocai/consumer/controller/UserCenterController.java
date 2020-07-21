@@ -23,7 +23,6 @@ public class UserCenterController {
         Integer todayFinishOrderNum = orderStatisticFeginClient.getTodayFinishOrderNum(id);
         return todayFinishOrderNum;
     }
-
 }
 
 
